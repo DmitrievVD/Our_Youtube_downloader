@@ -137,7 +137,7 @@ class Ui_Form(object):
         self.video_link.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.video_link.setAutoFillBackground(False)
         self.video_link.setStyleSheet("QTextBrowser {\n"
-"    font: 75 10pt \"Segoe Script\";\n"
+"    font: 100 15pt \"Segoe Script\";\n"
 "    color: rgb(0, 255, 130);\n"
 "}")
         self.video_link.setInputMethodHints(QtCore.Qt.ImhUrlCharactersOnly)
@@ -148,6 +148,7 @@ class Ui_Form(object):
         self.video_link.setReadOnly(False)
         self.video_link.setOverwriteMode(False)
         self.video_link.setAcceptRichText(False)
+        self.video_link.setPlaceholderText('https://')
         self.video_link.setObjectName("video_link")
         self.verticalLayout.addWidget(self.video_link)
         self.radioButton_video = QtWidgets.QRadioButton(self.verticalLayoutWidget)
@@ -160,7 +161,7 @@ class Ui_Form(object):
         self.radioButton_video.setFont(font)
         self.radioButton_video.setStyleSheet("QRadioButton {\n"
 "    color: rgb(0, 255, 130);\n"
-"    font: 75 10pt \"Segoe Script\";\n"
+"    font: 100 15pt \"Segoe Script\";\n"
 "}")
         self.radioButton_video.setObjectName("radioButton_video")
         self.radioButton_video.setChecked(True)
@@ -168,7 +169,7 @@ class Ui_Form(object):
         self.radioButton_audio = QtWidgets.QRadioButton(self.verticalLayoutWidget)
         self.radioButton_audio.setStyleSheet("QRadioButton {\n"
 "    color: rgb(0, 255, 130);\n"
-"    font: 75 10pt \"Segoe Script\";\n"
+"    font: 100 15pt \"Segoe Script\";\n"
 "}\n"
 "\n"
 "")
@@ -178,9 +179,9 @@ class Ui_Form(object):
         self.Start_button.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
-        font.setPointSize(10)
+        font.setPointSize(15)
         font.setBold(True)
-        font.setWeight(75)
+        font.setWeight(100)
         self.Start_button.setFont(font)
         self.Start_button.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.Start_button.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -197,16 +198,16 @@ class Ui_Form(object):
         self.path_file = QtWidgets.QTextBrowser(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
-        font.setPointSize(10)
-        font.setBold(False)
+        font.setPointSize(15)
+        font.setBold(True)
         font.setItalic(False)
-        font.setWeight(9)
+        font.setWeight(15)
         self.path_file.setFont(font)
         self.path_file.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.path_file.setAcceptDrops(False)
         self.path_file.setStyleSheet("QTextBrowser {\n"
 "    color: rgb(0, 255, 130);\n"
-"    font: 75 10pt \"Segoe Script\";\n"
+"    font: 100 15pt \"Segoe Script\";\n"
 "}")
         self.path_file.setInputMethodHints(QtCore.Qt.ImhMultiLine)
         self.path_file.setAutoFormatting(QtWidgets.QTextEdit.AutoAll)
@@ -215,14 +216,15 @@ class Ui_Form(object):
         self.path_file.setReadOnly(False)
         self.path_file.setAcceptRichText(False)
         self.path_file.setTextInteractionFlags(QtCore.Qt.TextEditorInteraction)
+        self.path_file.setPlaceholderText('Add path to file')
         self.path_file.setObjectName("path_file")
         self.verticalLayout.addWidget(self.path_file)
         self.Directorie_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
-        font.setPointSize(10)
+        font.setPointSize(15)
         font.setBold(True)
-        font.setWeight(75)
+        font.setWeight(100)
         self.Directorie_button.setFont(font)
         self.Directorie_button.setStyleSheet("QPushButton {\n"
 "    color: rgb(0, 255, 130);\n"
@@ -240,18 +242,17 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         self.progressBar.setFormat(_translate("Form", "%p%"))
-        self.video_link.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Segoe Script\'; font-size:10pt; font-weight:72; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-weight:600; color:#00ff82;\">https://</span></p></body></html>"))
+#         self.video_link.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'Segoe Script\'; font-size:30pt; font-weight:150; font-style:normal;\">\n"
+# "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-weight:600; color:#00ff82;\"></span></p></body></html>"))
         self.radioButton_video.setText(_translate("Form", "Download video"))
         self.radioButton_audio.setText(_translate("Form", "Download audio"))
         self.Start_button.setText(_translate("Form", "Start!!!"))
-        self.path_file.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Segoe Script\'; font-size:10pt; font-weight:72; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-weight:600; color:#00ff82;\">File path</span></p></body></html>"))
+#         self.path_file.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'Segoe Script\'; font-size:30pt; font-weight:150; font-style:normal;\">\n"
+# "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-weight:600; color:#00ff82;\"></span></p></body></html>"))
         self.Directorie_button.setText(_translate("Form", "Choose directorie"))
-    

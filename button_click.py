@@ -7,9 +7,9 @@ def start_button_click(self):
             link = self.video_link.toPlainText()
             path = self.path_file.toPlainText()
             if self.radioButton_video.isChecked():
-                download_video(link, path)
+                download_video(self, link, path)
             else:
-                download_audio(link, path)
+                download_audio(self, link, path)
         else:
             QtWidgets.QMessageBox.warning(self.frame,"Ошибка!","Вы не выбрали папку для сохранения!")
     else:
