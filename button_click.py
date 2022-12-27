@@ -1,9 +1,5 @@
 from funcs import download_audio, download_video
-from PyQt5 import QtWidgets, QtCore, QtGui
-
-# def buttonclick (self):
-#     self.Start_button.clicked.connect(start_button_click(self))
-#     self.Directorie_button.clicked.connect(button_directorie_click(self))
+from PyQt5 import QtWidgets
 
 def start_button_click(self):
     if len(self.video_link.toPlainText()) > 10:
@@ -18,15 +14,6 @@ def start_button_click(self):
             QtWidgets.QMessageBox.warning(self.frame,"Ошибка!","Вы не выбрали папку для сохранения!")
     else:
         QtWidgets.QMessageBox.warning(self.frame ,"Ошибка!","Укажите ссылку на видео!")
-
-# def start_button_click(self):
-#     link = self.video_link.toPlainText()
-#     path = self.path_file.toPlainText()
-#     if self.radioButton_video.isChecked():
-#         download_video(link, path)
-#     else:
-#         download_audio(link, path)
-
 
 def button_directorie_click(self):
     directorie_path = QtWidgets.QFileDialog.getExistingDirectory(parent= self.frame, caption='Choose directorie: ',directory=r'C:\Users\User\Desktop' )
