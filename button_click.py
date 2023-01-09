@@ -11,9 +11,9 @@ def start_button_click(self):
             else:
                 download_audio(self, link, path)
         else:
-            QtWidgets.QMessageBox.warning(self.frame,"Ошибка!","Вы не выбрали папку для сохранения!")
+            QtWidgets.QMessageBox.warning(self.Form,"Ошибка!","Вы не выбрали папку для сохранения!")
     else:
-        QtWidgets.QMessageBox.warning(self.frame ,"Ошибка!","Укажите ссылку на видео!")
+        QtWidgets.QMessageBox.warning(self.Form ,"Ошибка!","Укажите ссылку на видео!")
 
 def button_directorie_click(self):
     directorie_path = QtWidgets.QFileDialog.getExistingDirectory(parent= self.frame, caption='Choose directorie: ',directory=r'C:\Users\User\Desktop' )

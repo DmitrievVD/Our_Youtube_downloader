@@ -6,7 +6,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.setWindowModality(QtCore.Qt.NonModal)
         Form.setEnabled(True)
-        Form.resize(331, 411)
+        Form.resize(330, 420)
         Form.setWindowTitle("")
         Form.setWindowOpacity(1.0)
         Form.setStyleSheet("QWidget{\n"
@@ -15,7 +15,7 @@ class Ui_Form(object):
 "")
         self.frame = QtWidgets.QFrame(Form)
         self.frame.setEnabled(True)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 331, 411))
+        self.frame.setGeometry(QtCore.QRect(0, 0, 330, 420))
         self.frame.setStyleSheet("QFrame {\n"
 "    border-radius: 10px;\n"
 "    background-color: rgb(68,56,72);\n"
@@ -43,7 +43,7 @@ class Ui_Form(object):
         self.progressBar.setStyleSheet("QProgressBar {\n"
 "    background-color: rgb(124, 113, 116);\n"
 "    border-radius: 10px;\n"
-"    color: white;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QProgressBar::chunk {\n"
@@ -137,8 +137,9 @@ class Ui_Form(object):
         self.video_link.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.video_link.setAutoFillBackground(False)
         self.video_link.setStyleSheet("QTextBrowser {\n"
-"    font: 100 15pt \"Segoe Script\";\n"
+"    font: 100 12pt \"Segoe Script\";\n"
 "    color: rgb(0, 255, 130);\n"
+"    border: 1px solid;\n"
 "}")
         self.video_link.setInputMethodHints(QtCore.Qt.ImhUrlCharactersOnly)
         self.video_link.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -151,6 +152,24 @@ class Ui_Form(object):
         self.video_link.setPlaceholderText('https://')
         self.video_link.setObjectName("video_link")
         self.verticalLayout.addWidget(self.video_link)
+        self.file_name = QtWidgets.QTextEdit(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Segoe Script")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(9)
+        self.file_name.setFont(font)
+        self.file_name.setStyleSheet("QTextEdit {\n"
+"    font: 75 12pt \"Segoe Script\";\n"
+"    color: rgb(0, 255, 130);\n"
+"    border: 1px solid;\n"
+"}")
+        self.file_name.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.file_name.setDocumentTitle("")
+        self.file_name.setObjectName("file_name")
+        self.file_name.setPlaceholderText('Add new name of file')
+        self.verticalLayout.addWidget(self.file_name)
         self.radioButton_video = QtWidgets.QRadioButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
@@ -190,15 +209,19 @@ class Ui_Form(object):
 "    color: rgb(0,255, 130);\n"
 "    border-radius: 10px;\n"
 "    background-color: rgb(0, 0, 0);\n"
+"    border :2px solid;\n"
+"    border-bottom-color: rgb(0,255, 130);\n"
+"    border-right-color: rgb(0,255, 130);\n"
 "}")
         self.Start_button.setObjectName("Start_button")
         self.Start_button.setChecked(False)
+        
         self.Start_button.clicked.connect(lambda: start_button_click(self))
         self.verticalLayout.addWidget(self.Start_button)
         self.path_file = QtWidgets.QTextBrowser(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
-        font.setPointSize(15)
+        font.setPointSize(12)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(15)
@@ -207,7 +230,8 @@ class Ui_Form(object):
         self.path_file.setAcceptDrops(False)
         self.path_file.setStyleSheet("QTextBrowser {\n"
 "    color: rgb(0, 255, 130);\n"
-"    font: 100 15pt \"Segoe Script\";\n"
+"    font: 100 12pt \"Segoe Script\";\n"
+"    border: 1px solid;\n"
 "}")
         self.path_file.setInputMethodHints(QtCore.Qt.ImhMultiLine)
         self.path_file.setAutoFormatting(QtWidgets.QTextEdit.AutoAll)
@@ -222,7 +246,7 @@ class Ui_Form(object):
         self.Directorie_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setFamily("Segoe Script")
-        font.setPointSize(15)
+        font.setPointSize(12)
         font.setBold(True)
         font.setWeight(100)
         self.Directorie_button.setFont(font)
@@ -230,6 +254,9 @@ class Ui_Form(object):
 "    color: rgb(0, 255, 130);\n"
 "    border-radius: 10px;\n"
 "    background-color:rgb(0, 0, 0);\n"
+"    border :2px solid;\n"
+"    border-bottom-color: rgb(0,255, 130);\n"
+"    border-right-color: rgb(0,255, 130);\n"
 "}")
         self.Directorie_button.setObjectName("Directorie_button")
         self.verticalLayout.addWidget(self.Directorie_button)
