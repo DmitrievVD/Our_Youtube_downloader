@@ -8,9 +8,8 @@ def download_video(self, link, path):
         bytes_received = filesize - bytes_remaining
         finish = 100
         go = ((bytes_received * finish) / filesize)
-        # print(go, finish)
         self.progressBar.setValue(int(go))
-        time.sleep(0.0009)
+        time.sleep(0.01)
     
     yt = YouTube(link, on_progress_callback=on_progress_bar)
     strams = yt.streams.get_lowest_resolution()
@@ -18,7 +17,16 @@ def download_video(self, link, path):
         strams.download(path, filename=self.file_name.toPlainText()+ '.mp4')
     else:
         strams.download(path, filename='new_video.mp4')
-    QtWidgets.QMessageBox.information(self.frame, "Ура!!!", "Видео скачано!")
+    msg = QtWidgets.QMessageBox()
+    msg.setIcon(QtWidgets.QMessageBox.Information)
+    msg.setText("Download Compleat!")
+    msg.setWindowTitle("Already!")
+    msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+    msg.setEscapeButton(QtWidgets.QMessageBox.StandardButton)
+    retval = msg.exec_()
+  
+    # QtWidgets.QMessageBox().question(self.frame, "Ура!!!", "Видео скачано! Продолжить?", QtWidgets.QMessageBox.StandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No))
+    # QtWidgets.QMessageBox.setStandardButtons(QtWidgets.QMessageBox,| QtWidgets.QMessageBox.Ok)
 
 def download_audio(self,link, path):
     def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
@@ -26,9 +34,8 @@ def download_audio(self,link, path):
         bytes_received = filesize - bytes_remaining
         finish = 100
         go = ((bytes_received * finish) / filesize)
-        # print(go, finish)
         self.progressBar.setValue(int(go))
-        time.sleep(0.0009)
+        time.sleep(0.01)
     yt = YouTube(link, on_progress_callback=on_progress_bar)
     t=yt.streams.filter(only_audio=True).first()
     if len(self.file_name.toPlainText()) > 1:
