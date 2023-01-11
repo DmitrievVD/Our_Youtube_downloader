@@ -1,4 +1,4 @@
-from funcs import download_audio, download_video
+from funcs import download_audio, value_video
 from PyQt5 import QtWidgets
 
 def start_button_click(self):
@@ -7,7 +7,7 @@ def start_button_click(self):
             link = self.video_link.toPlainText()
             path = self.path_file.toPlainText()
             if self.radioButton_video.isChecked():
-                download_video(self, link, path)
+                value_video(self, link, path)
             else:
                 download_audio(self, link, path)
         else:

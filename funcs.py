@@ -1,24 +1,63 @@
 from pytube import YouTube
 from PyQt5 import QtWidgets
 import time
+from value_video import Ui_Value_video
 
-def download_video(self, link, path):
-    def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
-        filesize = stream.filesize
-        bytes_received = filesize - bytes_remaining
-        finish = 100
-        go = ((bytes_received * finish) / filesize)
-        # print(go, finish)
-        self.progressBar.setValue(int(go))
-        time.sleep(0.0009)
+
+def value_video(self, link, path):
+    global Value_video
+    Value_video = QtWidgets.QWidget()
+    ui = Ui_Value_video()
+    ui.setupUi(Value_video)
+    Value_video.show()
+
+    def download_video_btn():
+        value = ui.comboBox_value.currentText()
+        print(value)
+        def download_video(self, link, path):
+            Value_video.close()
+            def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
+                filesize = stream.filesize
+                bytes_received = filesize - bytes_remaining
+                finish = 100
+                go = ((bytes_received * finish) / filesize)
+                # print(go, finish)
+                self.progressBar.setValue(int(go))
+                time.sleep(0.009)
+
+            yt = YouTube(link, on_progress_callback=on_progress_bar)
+            strams = yt.streams.get_lowest_resolution()
+            if len(self.file_name.toPlainText()) > 1:
+                strams.download(path, filename=self.file_name.toPlainText() + '.mp4')
+            else:
+                strams.download(path, filename='new_video.mp4')
+            QtWidgets.QMessageBox.information(self.frame, "Ура!!!", "Видео скачано!")
+
+        download_video(self, link, path)
+
+    def value(link):
+        yt = YouTube(link)
+        streams = set()
+
+        for stream in yt.streams.filter(type="video"):
+            streams.add(stream.resolution)
+
+        ui.comboBox_value.addItems(streams)
+
+    value(link)
+
+
+
+    ui.download_video_btn.clicked.connect(download_video_btn)
+
+
+
+
+
+
+
     
-    yt = YouTube(link, on_progress_callback=on_progress_bar)
-    strams = yt.streams.get_lowest_resolution()
-    if len(self.file_name.toPlainText()) > 1:
-        strams.download(path, filename=self.file_name.toPlainText()+ '.mp4')
-    else:
-        strams.download(path, filename='new_video.mp4')
-    QtWidgets.QMessageBox.information(self.frame, "Ура!!!", "Видео скачано!")
+
 
 def download_audio(self,link, path):
     def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
