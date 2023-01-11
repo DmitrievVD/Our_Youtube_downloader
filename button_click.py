@@ -18,3 +18,9 @@ def start_button_click(self):
 def button_directorie_click(self):
     directorie_path = QtWidgets.QFileDialog.getExistingDirectory(parent= self.frame, caption='Choose directorie: ',directory=r'C:\Users\User\Desktop' )
     self.path_file.setPlainText(directorie_path)
+
+def reset_button_click(self):
+    self.path_file.setPlainText('')
+    self.video_link.setPlainText('')
+    self.file_name.setPlainText('')
+    self.progressBar.setValue(0)

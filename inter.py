@@ -1,4 +1,4 @@
-from button_click import start_button_click, button_directorie_click
+from button_click import start_button_click, button_directorie_click, reset_button_click
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
@@ -285,6 +285,25 @@ class Ui_Form(object):
         self.verticalLayout.addWidget(self.Directorie_button)
         self.Directorie_button.setChecked(False)
         self.Directorie_button.clicked.connect(lambda: button_directorie_click(self))
+        self.Reset_button = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setFamily("Segoe Script")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(100)
+        self.Reset_button.setFont(font)
+        self.Reset_button.setStyleSheet("QPushButton {\n"
+"    color: rgb(0, 255, 130);\n"
+"    border-radius: 10px;\n"
+"    background-color:rgb(0, 0, 0);\n"
+"    border :2px solid;\n"
+"    border-bottom-color: rgb(0,255, 130);\n"
+"    border-right-color: rgb(0,255, 130);\n"    
+"}")
+        self.Reset_button.setObjectName("Directorie_button")
+        self.verticalLayout.addWidget(self.Reset_button)
+        self.Reset_button.setChecked(False)
+        self.Reset_button.clicked.connect(lambda: reset_button_click(self))
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -306,3 +325,4 @@ class Ui_Form(object):
 # "</style></head><body style=\" font-family:\'Segoe Script\'; font-size:30pt; font-weight:150; font-style:normal;\">\n"
 # "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-weight:600; color:#00ff82;\"></span></p></body></html>"))
         self.Directorie_button.setText(_translate("Form", "Choose directorie"))
+        self.Reset_button.setText(_translate("Form", "Reset"))
