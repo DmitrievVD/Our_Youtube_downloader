@@ -11,10 +11,16 @@ def value_video(self, link, path):
     ui.setupUi(Value_video)
     Value_video.show()
 
+    def value(link):
+        yt = YouTube(link)
+        values = set()
+        for stream in yt.streams.filter(type="video"):
+            values.add(stream.resolution)
+        streams = sorted(values)
+        ui.comboBox_value.addItems(streams)
 
     def download_video_btn():
         value = ui.comboBox_value.currentText()
-        print(value)
         def download_video(self, link, path, val):
             Value_video.close()
             def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
@@ -22,7 +28,6 @@ def value_video(self, link, path):
                 bytes_received = filesize - bytes_remaining
                 finish = 100
                 go = ((bytes_received * finish) / filesize)
-                # print(go, finish)
                 self.progressBar.setValue(int(go))
                 time.sleep(0.009)
 
@@ -34,33 +39,14 @@ def value_video(self, link, path):
                 strams.download(path, filename='new_video.mp4')
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Information)
-            msg.setText('Download compleat!!! Continue?')
+            msg.setText('Download compleat!!!')
             msg.setWindowTitle('Already!')
-            # msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
-                
-            # Escape_button.clicked.connect(lambda: msg.close())
             msg.addButton("Ok", QtWidgets.QMessageBox.RejectRole)
-            # msg.addButton("Cancel", QtWidgets.QMessageBox.RejectRole)
             retval = msg.exec_()
-
-            # QtWidgets.QMessageBox.information(self.frame, "Ура!!!", "Видео скачано!")
-
         download_video(self, link, path, value)
 
-    def value(link):
-        yt = YouTube(link)
-        values = set()
-        for stream in yt.streams.filter(type="video"):
-            values.add(stream.resolution)
-        streams = sorted(values)
-        ui.comboBox_value.addItems(streams)
-
     value(link)
-
-
-
     ui.download_video_btn.clicked.connect(download_video_btn)
-
 
 def download_audio(self,link, path):
     def on_progress_bar(stream, chunk: bytes, bytes_remaining: int) -> None:  # pylint: disable=W0613
@@ -68,7 +54,6 @@ def download_audio(self,link, path):
         bytes_received = filesize - bytes_remaining
         finish = 100
         go = ((bytes_received * finish) / filesize)
-        # print(go, finish)
         self.progressBar.setValue(int(go))
         time.sleep(0.0009)
     yt = YouTube(link, on_progress_callback=on_progress_bar)
@@ -77,4 +62,10 @@ def download_audio(self,link, path):
         t.download(path, filename=(self.file_name.toPlainText() + '.mp3'))
     else:
         t.download(path, filename='new_audio.mp3')
-    QtWidgets.QMessageBox.information(self.frame, "Ура!!!", "Аудио скачано!")
+    msg = QtWidgets.QMessageBox()
+    msg.setIcon(QtWidgets.QMessageBox.Information)
+    msg.setText('Download compleat!!!')
+    msg.setWindowTitle('Already!')
+    msg.addButton("Ok", QtWidgets.QMessageBox.RejectRole)
+    retval = msg.exec_()
+    
